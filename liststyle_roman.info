@@ -1,0 +1,4 @@
+name = "Ckeditor list style roman plugin"
+description = "Ckeditor list style roman plugin"
+package = Custom
+core = 7.x

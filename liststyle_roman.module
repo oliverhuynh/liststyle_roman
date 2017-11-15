@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * Implements hook_wysiwyg_plugin().
+ *
+ */
+function liststyle_roman_wysiwyg_plugin($editor, $version) {
+    $plugins = array();
+    switch ($editor) {
+        case 'ckeditor':
+            if ($version > 4) {
+                $plugins['liststyle_roman'] = array(
+                    'path' => drupal_get_path('module', 'liststyle_roman') . '/plugins/liststyle_roman',
+                    'filename' => 'plugin.js',
+                    'load' => TRUE,
+                    'buttons' => array(
+                        'liststyle_roman' => t('Liststyle Roman'),
+                    ),
+                );
+            }
+            break;
+    }
+    return $plugins;
+}
+
+/**
+ * Implementation of hook_ckeditor_plugin().
+ */
+function liststyle_roman_ckeditor_plugin() {
+  return array('liststyle_roman' => array(
+    'name' => 'liststyle_roman',
+    'desc' => t('Liststyle Roman'),
+    'path' => drupal_get_path('module', 'liststyle_roman') .'/plugins/liststyle_roman/',
+    'buttons' => array(
+      'liststyle_roman' => array(
+        'label' => t('Liststyle Roman'),
+        'icon' => 'icons/liststyle_roman.png'
+      ),
+    )
+  ));
+}
